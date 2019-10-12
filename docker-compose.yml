@@ -1,0 +1,27 @@
+version: '3.3'
+
+services:
+  # DB services
+  mongodb:
+    image: mongo:3.3
+    container_name: mongodb-employees
+    ports:
+      - "127.0.0.1:27017:27017"
+    #    volumes:
+    #     - /data/db
+
+  database:
+    image: mysql/mysql-server:5.7
+    container_name: mysql-employees
+    command: --max_allowed_packet=32505856  --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: employees_db
+      MYSQL_USER: vlado
+      MYSQL_PASSWORD: vlado
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+      - type: bind
+        source: ./docker-setup/init-database.sql
+        target: /docker-entrypoint-initdb.d/init-database.sql
