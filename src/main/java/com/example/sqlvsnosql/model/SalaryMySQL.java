@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.time.Instant;
@@ -17,23 +16,19 @@ import java.time.Instant;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "employees")
-public class EmployeeMySQL {
+@Table(name = "salaries")
+public class SalaryMySQL {
 
     @Id
+    private String id;
+
+    @NotNull
+    private Double salary;
+
+    @NotNull
     private String empId;
 
     @NotNull
-    private String firstName;
-
-    @NotNull
-    private String lastName;
-
-    private Instant hireDate;
-
-    @PrePersist
-    public void prePersist() {
-        this.hireDate = Instant.now();
-    }
+    private Instant updateDate;
 
 }

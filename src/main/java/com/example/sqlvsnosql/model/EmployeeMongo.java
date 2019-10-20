@@ -22,7 +22,7 @@ public class EmployeeMongo {
     public static final String SEQUENCE_NAME = "employees_sequence";
 
     @Id
-    private String id;
+    private String empId;
 
     private String firstName;
 

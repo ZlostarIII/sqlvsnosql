@@ -1,31 +1,29 @@
 databaseChangeLog:
   - changeSet:
-      id: add-employees-table.yml
+      id: add-salaries-table.yml
       author: vladimir.saev
       changes:
         - createTable:
-            tableName: employees
+            tableName: salaries
             columns:
               - column:
-                  name: emp_id
+                  name: id
                   type: VARCHAR(255)
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: first_name
+                  name: salary
+                  type: DOUBLE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: emp_id
                   type: VARCHAR(255)
                   constraints:
                     nullable: false
               - column:
-                  name: last_name
-                  type: VARCHAR(255)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: hire_date
+                  name: update_date
                   type: TIMESTAMP(3)
                   constraints:
                     nullable: false
-        - sql:
-            sql: ALTER TABLE employees CHANGE hire_date hire_date TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3);
