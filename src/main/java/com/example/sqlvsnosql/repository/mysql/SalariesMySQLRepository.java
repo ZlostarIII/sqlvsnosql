@@ -9,8 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SalariesMySQLRepository extends JpaRepository<SalaryMySQL, String> {
 
-    @Query("select s.id, s.salary, s.empId, s.updateDate from SalaryMySQL s where s.empId = " +
-            "(select distinct e.empId from EmployeeMySQL e where e.empId = :empId)")
+    @Query("select s.id, s.salary, s.empId, s.updateDate from SalaryMySQL s where s.empId = :empId")
     Iterable<SalaryMySQL> getSalariesOfEmployee(@Param("empId") String empId);
 
 }

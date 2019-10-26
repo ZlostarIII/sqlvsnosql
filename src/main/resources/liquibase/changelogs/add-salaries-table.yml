@@ -27,3 +27,9 @@ databaseChangeLog:
                   type: TIMESTAMP(3)
                   constraints:
                     nullable: false
+        - createIndex:
+            tableName: salaries
+            columns:
+              - column:
+                  name: emp_id
+            indexName: idx_emp_id

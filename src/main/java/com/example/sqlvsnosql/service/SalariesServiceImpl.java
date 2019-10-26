@@ -26,26 +26,22 @@ public class SalariesServiceImpl implements SalariesService {
 
     @Override
     public List<SalaryMongo> findSalariesForEmployeeMongo(String empId) {
-        log.info("Getting salaries for certain date from mongo database");
         return salariesMongoRepository.getSalariesOfEmployee(empId);
     }
 
     @Override
     public Iterable<SalaryMySQL> findSalariesForEmployeeMySQL(String empId) {
-        log.info("Getting salaries for certain date from MySQL database");
         return salariesMySQLRepository.getSalariesOfEmployee(empId);
     }
 
     @Override
     public SalaryMongo saveToMongo(SalaryMongo salary) {
-        log.info("Saving salary to mongo database");
         salary.setId(UUID.randomUUID().toString());
         return salariesMongoRepository.save(salary);
     }
 
     @Override
     public SalaryMySQL saveToMySQL(SalaryMySQL salary) {
-        log.info("Saving salary to MySQL database");
         salary.setId(UUID.randomUUID().toString());
         return salariesMySQLRepository.save(salary);
     }
