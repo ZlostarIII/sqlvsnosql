@@ -10,22 +10,37 @@ services:
     #    volumes:
     #     - /data/db
 
+#  database:
+#    image: mysql/mysql-server:5.7
+#    container_name: mysql-employees
+#    command:
+#      --max_allowed_packet=32505856
+#      --max_connections=200
+#      --character-set-server=utf8mb4
+#      --collation-server=utf8mb4_unicode_ci
+#      --query_cache_size=10M
+#      --innodb_buffer_pool_size=14GB
+#      --slow_query_log=1
+#      --long_query_time=1
+#      --log_output=TABLE
+#      --innodb_io_capacity=21000
+#    ports:
+#      - 3307:3306
+#    environment:
+#      MYSQL_DATABASE: employees_db
+#      MYSQL_USER: vlado
+#      MYSQL_PASSWORD: vlado
+#      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+#    volumes:
+#      - type: bind
+#        source: ./docker-setup/init-database.sql
+#        target: /docker-entrypoint-initdb.d/init-database.sql
+
   database:
-    image: mysql/mysql-server:5.7
-    container_name: mysql-employees
-    command:
-      --max_allowed_packet=32505856
-      --max_connections=200
-      --character-set-server=utf8mb4
-      --collation-server=utf8mb4_unicode_ci
-      --query_cache_size=10M
-      --innodb_buffer_pool_size=14GB
-      --slow_query_log=1
-      --long_query_time=1
-      --log_output=TABLE
-      --innodb_io_capacity=21000
+    image: mysql/mysql-server:8.0
+    container_name: mysql-employees8.0
     ports:
-      - 3306:3306
+      - 3307:3306
     environment:
       MYSQL_DATABASE: employees_db
       MYSQL_USER: vlado
