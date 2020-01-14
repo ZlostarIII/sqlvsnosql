@@ -2,7 +2,7 @@ spring:
   application:
     name: sqlvsnosql
   datasource:
-    url: jdbc:mysql://localhost:3306/employees_db?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&sessionVariables=sql_mode='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'
+    url: jdbc:mysql://localhost:3307/employees_db?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&useLegacyDatetimeCode=false&sessionVariables=sql_mode='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'
     username: "vlado"
     password: "vlado"
     hikari:
@@ -17,7 +17,7 @@ spring:
       hibernate:
         jdbc:
           time_zone: UTC
-    database-platform: org.hibernate.dialect.MySQL5Dialect
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       use-new-id-generator-mappings: false
       ddl-auto: validate

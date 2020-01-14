@@ -1,3 +1,9 @@
+buildscript {
+	ext {
+		hibernateVersion = '5.4.10.Final'
+	}
+}
+
 plugins {
 	id 'org.springframework.boot' version '2.1.8.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
@@ -26,14 +32,14 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.kafka:spring-kafka'
 
-	implementation 'org.liquibase:liquibase-core:3.8.0'
+	implementation 'org.liquibase:liquibase-core:3.8.5'
 
-	implementation 'org.hibernate:hibernate-core:5.2.17.Final'
-	implementation 'org.hibernate:hibernate-ehcache:5.2.17.Final'
-	implementation 'org.hibernate:hibernate-entitymanager:5.2.17.Final'
-	implementation 'org.hibernate:hibernate-envers:5.2.17.Final'
-	implementation 'org.hibernate:hibernate-java8:5.2.17.Final'
-	implementation 'org.hibernate:hibernate-jpamodelgen:5.2.17.Final'
+	implementation "org.hibernate:hibernate-core:${hibernateVersion}"
+	implementation "org.hibernate:hibernate-ehcache:${hibernateVersion}"
+	implementation "org.hibernate:hibernate-entitymanager:${hibernateVersion}"
+	implementation "org.hibernate:hibernate-envers:${hibernateVersion}"
+	implementation "org.hibernate:hibernate-java8:${hibernateVersion}"
+	implementation "org.hibernate:hibernate-jpamodelgen:${hibernateVersion}"
 
 	implementation 'org.javassist:javassist:3.23.1-GA'
 	implementation 'javax.xml.bind:jaxb-api:2.3.0'
@@ -41,7 +47,7 @@ dependencies {
 
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
-	runtimeOnly 'mysql:mysql-connector-java'
+	runtimeOnly 'mysql:mysql-connector-java:8.0.18'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
