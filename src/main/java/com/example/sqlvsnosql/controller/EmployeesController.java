@@ -2,6 +2,7 @@ package com.example.sqlvsnosql.controller;
 
 import com.example.sqlvsnosql.model.EmployeeMongo;
 import com.example.sqlvsnosql.model.EmployeeMySQL;
+import com.example.sqlvsnosql.model.EmployeeWithAllSalaries;
 import com.example.sqlvsnosql.service.EmployeesServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,5 +52,15 @@ public class EmployeesController {
     @PostMapping("mysql")
     public ResponseEntity<EmployeeMySQL> saveMysqlEmployee(@RequestBody EmployeeMySQL employee) {
         return new ResponseEntity<>(employeesService.saveToMySQL(employee), HttpStatus.OK);
+    }
+
+    @GetMapping("mongo/salaries/{id}")
+    public ResponseEntity<EmployeeWithAllSalaries> getEmployeeMongoSalariesById(@PathVariable String id) {
+        return new ResponseEntity<>(employeesService.lookupEmployeeSalaries(id), HttpStatus.OK);
+    }
+
+    @GetMapping("mysql/salaries/{id}")
+    public ResponseEntity<EmployeeWithAllSalaries> getEmployeeMySQLSalariesById(@PathVariable String id) {
+        return new ResponseEntity<>(employeesService.getEmployeeSalaries(id), HttpStatus.OK);
     }
 }
