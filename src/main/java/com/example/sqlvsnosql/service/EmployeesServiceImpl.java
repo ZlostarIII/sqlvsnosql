@@ -104,7 +104,7 @@ public class EmployeesServiceImpl implements EmployeesService {
                                 ._id(rs.getString("_id"))
                                 .firstName(rs.getString("firstName"))
                                 .lastName(rs.getString("lastName"))
-                                .salaries(Arrays.asList(new ObjectMapper().readValue(rs.getString("salaries"), SalaryMySQL[].class))).build();
+                                .salaries(Arrays.asList(new ObjectMapper().readValue(rs.getString("salaries"), SalaryMySQL[].class.arrayType()))).build();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
