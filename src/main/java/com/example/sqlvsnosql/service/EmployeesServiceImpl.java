@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -104,13 +103,12 @@ public class EmployeesServiceImpl implements EmployeesService {
                                 ._id(rs.getString("_id"))
                                 .firstName(rs.getString("firstName"))
                                 .lastName(rs.getString("lastName"))
-                                .salaries(Arrays.asList(new ObjectMapper().readValue(rs.getString("salaries"), SalaryMySQL[].class.arrayType()))).build();
+                                .salaries(new ObjectMapper().readValue(rs.getString("salaries"), SalaryMySQL[].class)).build();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                     return null;
                 }
         );
-
     }
 }
